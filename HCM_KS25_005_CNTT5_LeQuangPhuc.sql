@@ -4,13 +4,13 @@ USE ESportsManagement;
 
 CREATE TABLE team (
 id VARCHAR(10) PRIMARY KEY,
-team_name VARCHAR(100),
+full_name VARCHAR(100),
 national VARCHAR(50),
 owner VARCHAR(100),
 founded_year INT
 );
 
-CREATE TABLE player (
+CREATE TABLE players (
 id VARCHAR(10) PRIMARY KEY,
 full_name VARCHAR(100) NOT NULL,
 nickname VARCHAR(50) NOT NULL,
@@ -56,8 +56,8 @@ VALUES
 ('GOAT', 'faker', 'mid', '200000000'),
 ('kim-seon-ho', 'ruler', 'bot', '100000000'),
 ('kim-min-jae', 'keria', 'support', '150000000'),
-('p', 'kanavi', 'jungle', '120000000'),
-('kim-shang-chi', 'doran', 'top', '180000000');
+('park-chi-young', 'kanavi', 'jungle', '120000000'),
+('kim-shang-chi', 'doran', 'top', '180000000');	
 
 INSERT INTO Matchs VALUES
 ('MS_001', '2025-01-01 18:00:00', '2-1', 50000000),
@@ -74,11 +74,11 @@ INSERT INTO Match_Statistic VALUES
 ('MS_007', 'P05', 2, 2, 10);
 
 UPDATE players
-SET salary = salary * 20 /100
+SET salary = salary * 1.2
 WHERE player_position ='jungle';
 
-DELETE FROM owner
-WHERE owner = null;
+DELETE FROM team
+WHERE owner IS NULL;
 
 SELECT *
 FROM players
@@ -93,7 +93,7 @@ FROM players
 WHERE id IN (
     SELECT id
     FROM Team
-    WHERE national = 'Vietnam'
+    WHERE khu_vuc = 'Vietnam'
 );
 
 
